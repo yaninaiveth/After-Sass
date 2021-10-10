@@ -1,0 +1,294 @@
+@import "variables";
+@import "reset";
+
+
+//NESTING O ANIDAMIENTO
+
+body{
+
+    background-color: $rosaSass;
+    
+
+    //Comienzo estilo de header
+
+    header{
+
+        background-color: $crema;
+        display: flex;
+        padding: $padding1;
+        align-items: center;
+        justify-content: center;
+    
+        nav{
+    
+            ul{
+                list-style: none;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+    
+                li{
+                    margin: 1em;
+                    font-family: Arial, Helvetica, sans-serif;
+    
+                    a{
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        color: $black;
+                        padding: $padding1/2;
+                        
+                        &:hover{
+                            color: $rosaSass;
+                            background-color: $black;
+                            border-radius: 5%;
+            
+                        }
+                    }
+    
+                }
+                
+            }
+        }
+    } //Fin estilo de header
+    
+
+    main{
+
+        h1, h2{
+            color: $crema;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2em;
+            margin: 1em;
+            text-align: center;
+ 
+        }
+
+        .container{
+
+            margin: $margin3;
+            background: $crema;
+            z-index: 9995;
+            opacity: 0.8;
+
+
+            .container__parrafo{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1em;
+                text-align: justify;
+                line-height: 1.5em;
+                z-index: 9999;
+                padding: 2em;
+            }
+        }
+
+
+        .container-card{
+
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin: $margin3;
+
+            @mixin card {
+                text-align: center;
+                z-index: 9999;
+                line-height: 2em;
+                font-family: Arial, Helvetica, sans-serif; 
+            }
+
+            .card__p{
+
+                @include card;
+            }
+
+            .card__p--mod{
+
+                @include card; // Las clases card__p y card__p--mod comparten mismas propiedades, con esto genero el mixin, lo invoco con @include
+                height: 127px;
+
+            }
+        }
+
+        .nesting{
+            color: $crema;
+            font-size: 16em;
+        }
+
+        img{
+            margin-left: 30%;
+        }
+
+        .parrafo{
+            text-align: center;
+            color: $white;
+            font-size: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 1em;
+        }
+
+        @mixin margen ($margenIzq, $ancho, $alto){ // Paso propiedades por parámetros
+            margin-left:$margenIzq;
+            width: $ancho;
+            height: $alto;
+        }
+
+        .imgVar,.imgFor{
+            @include margen(40%, auto, auto);
+        }
+
+        .imgCond{
+            @include margen(38%, auto, auto);
+        }
+
+        .imgMap{
+           @extend .imgCond; // Aplico extend. Extend aplica la propiedad de .imgCond
+        }
+
+        .imgEach{
+            @include margen(38%, auto, auto);
+        }
+
+        .imgWh{
+            @include margen(43%, auto, auto);
+        }
+
+    }
+
+    footer{
+        background-color: $crema;
+        width: 100%;
+        height: auto;
+        margin-bottom: 0;
+
+        h4{
+            text-align: center;
+            color: $rosaSass;
+            font-size: 4em;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 2em;
+        }
+    }
+
+} // Fin body
+
+
+// CONDICIONALES IF
+
+$background: green; 
+
+body{
+
+    @if ($background == black) { //Si, condición: la VARIABLE BACKGROUND es negro el background-color DEL BODY va a ser gainsboro
+
+        background-color: gainsboro;
+
+    }@else if($background == green){ // Sino si, condición:la VARIABLE BACKGROUND es verde el bockgroudnd-color DEL BODY va a ser negro
+
+        background-color: black;
+
+    }@else if($background == red){ 
+
+        background-color: cadetblue;
+    }
+}
+
+
+.footer{
+
+    @if ($background == black) { //Si la VARIABLE BACKGROUND es black background color DEL FOOTER va a ser gainsboro
+
+        background-color: gainsboro;
+
+    }@else if($background == green){
+
+        background-color: black;
+
+    }@else if($background == red){
+
+        background-color: cadetblue;
+    }
+}
+
+
+// BUCLE FOR
+
+// Utilizo bucle for para darle propiedades a los div con clase .container-card__card-#{i}
+// Voy a tener tantos ciclos como clases correspondientes terminadas en #{i} que va a ser un número (el número correspondiente a los ciclos
+// incluída en el nombre de la variable, interpolación)
+
+@for $i from 1 through 6{
+                
+    .container-card__card-#{$i}{
+        width: 30%;
+        background:cornsilk ;
+        height: 175px;
+        margin: 1em;
+        opacity: 0.8;
+        padding: 1em;
+    }
+}
+
+
+//EACH
+// Va a aplicar las propiedades correspondientes a las clases uno, dos, tres; en el index figuran como uno-ti, dos-ti, tres-ti
+// Va a iterar 3 veces la variable $item va a tomar el valor de uno, y a la clase uno-ti le va a aplicar las propiedades correspondientes
+// En este caso va a iterar tres veces
+
+@each $item in uno, dos, tres {
+    .#{$item}-ti{
+        font-size: 5em;
+        font-family: Arial, Helvetica, sans-serif;
+        color: cornsilk;
+        text-align: center;
+    }
+}
+
+// MAPAS
+// Similar a each solo que se define una variable, en la cual voy a buscar en este caso es foots
+
+$foots:(
+    foot1:black,
+    foot2:green,
+    foot3: red
+);
+
+@each $foot, $color in $foots{
+    .pie--#{$foot}{
+        font-size: 5em;
+        color: $color;
+        text-align: center;
+        margin-top: 2em;
+    }
+}
+
+
+// WHILE
+// Declaro la variable $i, en este caso el valor del ancho del header va a ser 30px por el valor de $i
+// El valor de $i va a ser igual a su vez a la cantidad de bucles del while, la condición debe hacerse falsa en algún momento.
+// Es decir que la condición no se debe cumplir para que no sea infinitamente verdadera, por tal motivo cada vez que sale del bucle, la variable $i se decrementa en dos.
+
+$i:0;
+
+@while $i > 2{
+  header{
+      width: 30px * $i;
+    }
+
+    $i: $i - 2;
+}
+
+/* NO HACER:
+
+$i:5
+
+$while $i > 0{
+    header{
+        width: 30px * $i;
+    }
+}
+
+La condición de que $i sea mayor que cero siempre se cumple y nunca se va a salir del bucle, el ancho del width seguirá incrementando en 5 infinitamente*/
+
+
+

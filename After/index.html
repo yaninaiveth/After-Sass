@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./estilo.css">
+</head>
+
+<body>
+    <header>
+        <img src="img/sass.png" width="150" alt="sasslogo">
+        <nav>
+            <ul>
+                <li><a href="#">Nesting o Anidación</a></li>
+                <li><a href="#">Variables</a></li>
+                <li><a href="#">Condicionales</a></li>
+                <li><a href="#">Partials</a></li>
+                <li><a href="#">Bucles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <h1>SASS</h1>
+
+        <div class="container">
+            <p class="container__parrafo">
+                Sass es un procesador CSS. Un preprocesador CSS es una herramienta que nos 
+                permite generar, de manera automática, hojas de estilo, añadiéndoles características 
+                que no tiene CSS, y que son propias de los lenguajes de programación, como pueden 
+                ser variables, funciones, selectores anidados, herencia, etcétera.
+            </p>
+        </div>
+        
+        <article class="container-card">
+
+            <div class="container-card__card-1">
+                <p class="card__p">
+                    <strong>Variables:</strong> con SASS, la información puede almacenarse en variables para su posterior reutilización.
+                    Por ejemplo, es posible almacenar un valor de color de forma centralizada bajo una variable más 
+                    práctica.
+                </p>
+            </div>
+
+            <div class="container-card__card-2">
+                <p class="card__p">
+                    <strong>Funciones matemáticas:</strong> también puedes utilizar operadores matemáticas como +, -, *, / o %. 
+                    Esto te permite influir en las especificaciones de tamaño, por ejemplo.
+                </p>
+            </div>
+
+            <div class="container-card__card-3">
+                <p class="card__p">
+                    <strong>Bucles:</strong> otra ventaja de SASS es que puedes utilizar bucles que se repiten hasta que se alcanza un estatus definido. <br> Algunos son for o while.
+                </p>
+            </div>
+
+            <div class="container-card__card-4">
+                <p class="card__p">
+                    <strong>Mixins:</strong> son plantillas. Podés crearlas vos mism@ o simplemente integrarlas en tu propio código. Una analogía a estas pueden ser las funciones utilizadas en programación.
+                </p>
+            </div>
+
+            <div class="container-card__card-5">
+                <p class="card__p">
+                    <strong>Anidación de selectores:</strong> CSS no permite anidar el código. Con SASS, sin embargo, el usuario puede visualizar las dependencias, disminuyendo la redundancia y el esfuerzo de escritura de código.
+                </p>
+            </div>
+
+            <div class="container-card__card-6">
+                <p class="card__p--mod">
+                    <strong>Sucesiones:</strong> es posible traspasar propiedades de un selector a otro. Esto también ahorra escritura innecesaria y reduce las líneas de código.
+                </p>
+            </div>
+
+        </article>
+
+        <h2>Nesting o Anidamiento</h2>
+        <img src="img/nav.png" alt="Anidamiento">
+
+        <h2>Variables</h2>
+        <p class="parrafo">
+            Es un lugar donde vamos a almacenar la información que vamos a utilizar en nuestro estilo, simplifica y optimiza el código, también facilita la modificación, en caso de ser necesario.
+            Declaramos las variables con el símbolo $, el respectivo nombre y valor: <strong>$rosaSass: rgb(208, 100, 155)</strong>. 
+        </p>
+        <img class="imgVar" src="img/var.png" alt="variables">
+
+        <h2>Condicionales</h2>
+        <p class="parrafo">
+            Nos permite elegir un resultado de acuerdo a una condición.
+        </p>
+        <img class="imgCond" src="img/cond.PNG" alt="condicional">
+
+        <h2>BUCLES</h2>
+
+        <h2>For</h2>
+        <p class="parrafo">
+            Establecemos una variable sobre la cual vamos a iterar.
+        </p>
+
+        <img class="imgFor" src="img/for.png" alt="for">
+
+        <h2>Each</h2>
+        <p class="parrafo">
+            En la variable guardamos los nombres "siguientes", y al resultado de esto se le van a aplicar las propiedades
+        </p>
+
+        <img class="imgEach" src="img/each.PNG" alt="">
+
+        <h5 class="uno-ti">TITULO EACH 1</h5>
+        <h5 class="dos-ti">TITULO EACH 2</h5>
+        <h5 class="tres-ti"> TITULO EACH 3</h5>
+
+
+        <h2>Maps</h2>
+        <img class="imgMap" src="img/map.PNG" alt="mapa">
+
+        <h2 class="tit-1">TITULO EACH 1</h1>
+        <h2 class="tit-2">TITULO EACH 2</h1>
+        <h2 class="tit-3">TITULO EACH 3</h1>
+        <h2 class="tit-4">TITULO EACH 4</h1>
+        <h2 class="tit-5">TITULO EACH 5</h1>
+
+        <h2>While</h2>
+        <p class="parrafo">Se aplica una propiedad hasta que la condición sea falsa</p>
+        <img class="imgWh" src="img/while.PNG" alt="while">
+        
+    </main>
+
+    <footer class="footer">
+        <h4>FOOTER</h4>
+        <h6 class="pie--foot1">map1</h6>
+        <h6 class="pie--foot2">map2</h6>
+        <h6 class="pie--foot3">map3</h6>
+    </footer>
+    
+</body>
+</html>
